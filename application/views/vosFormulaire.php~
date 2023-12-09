@@ -1,0 +1,46 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Recontre - Vos formulaire</title>
+
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styleGenerale.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/vosFormulaire.css')?>">
+</head>
+<body >
+	<?php if (isset($vosFormulaire)): ?>
+
+		<h1>Voici tous les formulaire que vous avez créer</h1>
+		<div class="container">
+			<?php foreach ($vosFormulaire as $formulaire): ?>
+				<a href="<?=base_url('index.php/ResultatFormulaire_controller/formulaire?clefFormulaire='.$formulaire->idFormulaire)?>">
+					<div class="formulaire">
+						<p><?php echo "$formulaire->titre" ?></p>
+						<p><?php echo "$formulaire->lieu" ?></p>
+						<p><?php echo "$formulaire->description" ?></p>
+						<p><?php echo "$formulaire->idFormulaire" ?></p>
+					</div>
+				</a>
+			<?php endforeach; ?>
+		</div>
+	<?php else: ?>
+		<h1>On dirais que c'est vide ici !</h1>
+		<h2>Vous pourrez voire ici les réponses qu'on reçus vos formulaire dès que vous en aurez créer</h2>
+		<div class="selection">
+		<a class="bouton" href="<?=base_url('index.php/welcome')?>">
+			<div>
+				<p>Retour à l'acceuil</p>
+				<?=img('assets/img/accueil.png')?>
+			</div>
+		</a>
+		<a class="bouton" href="<?=base_url('index.php/welcome/index/creer_formulaire')?>">
+			<div>
+				<p>Creer un Formulaire</p>
+				<?=img('assets/img/nouveauFormulaire.png')?>
+			</div>
+		</a>
+	</div>
+	<?php endif; ?>
+</body>

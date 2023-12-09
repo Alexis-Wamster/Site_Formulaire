@@ -1,0 +1,27 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Rencontre - Verification Email</title>
+
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styleGenerale.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/creerCompte.css')?>">
+</head>
+<body>
+	<div class="container">
+		<div class="cadre">
+			<h1>Entrez le code que nous vous avons envoyé par mail !</h1>
+			<?=form_open('compte_controller/codeVerifie')?>
+				<p>Votre email</p>
+				<input class="champs grand" type="number" placeholder="00000000" name="code">
+				<div class="ligne">
+					<button>Retour</button>
+					<button type="submit">Valider</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

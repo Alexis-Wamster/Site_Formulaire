@@ -1,0 +1,75 @@
+.enTete{
+	background: linear-gradient(135deg, #5b247a, #1bcedf);
+	border: 2px solid black;
+}
+.chercheClef{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 150px;
+}
+.champs{
+	border-radius: 30px;
+	width: 600px;
+	height: 60px;
+	font-size: 40px;
+}
+.champs:hover{
+	width: 650px;
+}
+
+.haut{
+	display: grid;
+	grid-template-columns: auto 100px;
+}
+.gauche{
+	grid-column-start: 1;
+}
+.droite{
+	grid-column-start: 2;
+	display: flex;
+}
+
+.compte{
+	width: 50px;
+	height: 50px;
+	margin: 25px;
+	border-radius: 25px;
+	transition: width 0.3s, height 0.3s, margin 0.3s, border-radius 0.3s;
+}
+
+.compte:hover{
+	width: 60px;
+	height: 60px;
+	margin: 20px;
+	border-radius: 30px;
+}
+
+.deconnecte div{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.deconnecte img{
+	width: 50px;
+	height: 50px;
+	transition: width 0.3s, height 0.3s;
+}
+
+.deconnecte img:hover{
+	width: 60px;
+	height: 60px;
+}
+
+.connecte{
+	background: blue;
+	border: 2px solid black;
+}
+
+.connecte p{
+	text-align: center;
+	font: 20px "Poppins", "Nunito Sans", "Montserrat", sans-serif;
+	letter-spacing: .3px;
+	color: white;
+}

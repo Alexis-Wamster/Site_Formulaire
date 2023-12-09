@@ -1,0 +1,102 @@
+.contenus{
+	margin: 0px 300px;
+}
+
+@keyframes animate {
+  from {grid-template-rows: 0fr;}
+  to {grid-template-rows: 1fr;}
+}
+details > div {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all ease-in-out 0.5s;
+}
+details > div > div {
+  overflow: hidden;
+}
+details[open] > div {
+  animation: animate 0.3s 0s 1 normal forwards;
+}
+
+.present{
+  background: rgb(0,255,0);
+}
+
+.absent{
+  background: rgb(255,0,0);
+}
+
+.jour{
+  background: linear-gradient(135deg, #5b247a, #1bcedf);
+  border: 2px solid black;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+.horaire{
+  border-radius: 20px;
+  border: 2px solid black;
+  margin: 20px 40px;
+  transition: margin 0.3s;
+}
+
+.horaire:hover{
+  margin: 20px;
+}
+
+.ligneHoraire{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.ligneHoraire .droite{
+  margin-right: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.ligneHoraire .gauche{
+  margin-left: 20px;
+}
+
+progress{
+  margin-right: 20px;
+  border: 2px solid black;
+  -webkit-appearance: none;
+}
+
+progress::-webkit-progress-bar{
+  background: rgb(255, 0, 0);
+}
+
+progress::-webkit-progress-value{
+  background: rgb(0, 255, 0);
+}
+
+.gens{
+  margin: 20px;
+}
+
+p{
+  font: "Poppins", "Nunito Sans", "Montserrat", sans-serif;
+  color: white;
+}
+
+.enTete{
+  display: flex;
+  justify-content: space-between;
+}
+
+.droite{
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.description{
+  margin: 40px;
+}

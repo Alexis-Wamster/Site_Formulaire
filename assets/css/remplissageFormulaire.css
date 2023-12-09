@@ -1,0 +1,65 @@
+p{
+	font: "Poppins", "Nunito Sans", "Montserrat", sans-serif;
+	color: white;
+}
+
+.enTete{
+	display: flex;
+	justify-content: space-between;
+}
+
+.droite{
+	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.description{
+	margin: 40px;
+}
+
+.champs{
+	border-radius: 30px;
+	height: 60px;
+	font-size: 40px;
+	width: 350px;
+}
+
+.champs:hover{
+	width: 400px;
+}
+.prenom, .nom{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 400px;
+	margin: 0px 20px;
+}
+
+.listeDate > li{
+	background-color: #4b83af;
+	border-radius: 0px 0px 20px 20px;
+	margin-top: 20px;
+}
+
+.listeDate .date{
+	text-align: center;
+	margin: 0px;
+	background-color: #2b658f;
+}
+
+.listeHeure{
+	margin-left: 45%;
+}
+
+.contenus{
+	margin: 0px 300px;
+}
+
+.nomPrenom{
+	background-color: #2b658f;
+	margin-top: 20px;
+	padding-bottom: 20px;
+	border-radius: 20px 20px 0px 0px;
+}

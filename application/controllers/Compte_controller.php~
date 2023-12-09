@@ -1,0 +1,45 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Compte_controller extends CI_Controller {
+
+	public function connexion()
+	{
+		$this->load->model('compte_modele');
+		if ($this->compte_modele->inscription()){
+			echo 'vous êtes connecté';
+		}
+		else{
+			echo 'identifiant ou mot de passe incorrect';
+		}
+	}
+
+	public function inscription()
+	{
+		$this->load->model('compte_modele');
+		$isEmailValide = $this->compte_modele->inscription();
+		if ($isEmailValide == 'unicite'){
+			echo 'unicite';
+		}
+		elseif ($isEmailValide == 'prenom'){
+			echo 'prenom';
+		}
+		elseif ($isEmailValide == 'nom'){
+			echo 'nom';
+		}
+		elseif ($isEmailValide == 'email'){
+			echo 'email';
+		}
+		elseif ($isEmailValide == 'motDePasse'){
+			echo 'motDePasse';
+		}
+		elseif ($isEmailValide == 'motDePasse2'){
+			echo 'motDePasse2';
+		}
+		else{
+			$this->load->helper('html');
+			$this->load->helper('form');
+			$this->load->view('accueil_vue');
+		}
+	}
+}

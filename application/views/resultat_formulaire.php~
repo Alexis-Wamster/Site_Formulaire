@@ -1,0 +1,95 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Rencontre - Formulaire introuvable</title>
+
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styleGenerale?v=2.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/resultatFormulaire?v=4.css')?>">
+</head>
+<body>
+	<div class="enTete">
+		<h1><?php echo $titre; ?></h1>
+		<h2><?php echo $lieu; ?></h2>
+		<h2><?php echo $description; ?></h2>
+	</div>
+	
+	<div class="contenus">
+
+	<details>
+    	<summary>
+    		<p>nombre de réponses : <?php  echo $statistique['nombre'];?><p>
+    	</summary>
+    	<div>
+    		<div>
+    			<ul>
+    				<?php foreach ($statistique['present'] as $personne): ?>
+    					<li>
+    						<p><?php echo "{$personne['prenom']} {$personne['nom']}"; ?></p>
+    					</li>
+    				<?php endforeach; ?>
+    			</ul>
+    		</div>
+    	</div>
+	</details>
+	
+
+		<ul>
+			<?php foreach($date as $jour => $listeHeure): ?>
+				<li class="jour">
+					<p><?php echo "$jour"; ?></p>
+				</li>
+				<ul>
+					<?php foreach($listeHeure as $horaire => $statistiqueHoraire): ?>
+						<li class="horaire">
+							<div>
+								<details>
+									<summary data-pourcentage="<?php echo $statistiqueHoraire['pourcentage']; ?>">
+										<p><?php echo "{$horaire} : {$statistiqueHoraire['pourcentage']}%"; ?></p>
+										<progress class="horaire" value="<?php echo $statistiqueHoraire['pourcentage']; ?>" max="100"></progress>
+									</summary>
+									<div>
+    									<div class="present">
+											<ul>
+						    					<?php foreach ($statistiqueHoraire['present'] as $personne): ?>
+						    						<li>
+						    							<p><?php echo "{$personne['prenom']} {$personne['nom']}"; ?></p>
+						    						</li>
+						    					<?php endforeach; ?>
+						    				</ul>
+						    			</div>
+    									<div class="absent">
+    										<ul>
+						    					<?php foreach ($statistiqueHoraire['absent'] as $personne): ?>
+						    						<li>
+						    							<p><?php echo "{$personne['prenom']} {$personne['nom']}"; ?></p>
+						    						</li>
+						    					<?php endforeach; ?>
+						    				</ul>
+						    			</div>
+    								</div>
+								</details>
+							</div>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endforeach; ?>
+		</ul>
+		<button onclick="window.location.href='<?php echo  base_url('index.php/vosFormulaireController/chargerFormulaire')?>'">Retour</button>
+		<button onclick="window.location.href='<?php echo  base_url()?>'">Accueil</button>
+		
+		</div>
+</body>
+<script>
+var summaryElements = document.querySelectorAll('summary.horaire');
+	summaryElements.forEach(function(summary) {
+  		var pourcentage = parseInt(summary.getAttribute('data-pourcentage'));
+  		var red = Math.round((1 - pourcentage / 100) * 255);
+  		var green = Math.round((pourcentage / 100) * 255);
+  		var blue = 0;
+  		summary.style.backgroundColor = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+	});
+</script>
+</html>

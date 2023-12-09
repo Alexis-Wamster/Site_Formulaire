@@ -1,0 +1,41 @@
+.contenus{
+	margin: 0px 300px;
+}
+
+@keyframes animate {
+  from {grid-template-rows: 0fr;}
+  to {grid-template-rows: 1fr;}
+}
+details > div {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all ease-in-out 0.5s;
+}
+details > div > div {
+  overflow: hidden;
+}
+details[open] > div {
+  animation: animate 0.15s 0s 1 normal forwards;
+}
+
+summary {
+  list-style: none; /* Supprime la puce du summary */
+}
+
+li {
+  list-style: none; /* Supprime la puce du li */
+  margin-left: 0; /* Supprime le décalage à gauche du li */
+}
+
+
+progress.horaire::-webkit-progress-value {
+  background-color: green;
+}
+
+progress.horaire::-moz-progress-bar {
+  background-color: green;
+}
+
+progress.horaire::-ms-fill {
+  background-color: green;
+}

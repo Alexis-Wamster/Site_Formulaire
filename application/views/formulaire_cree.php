@@ -1,0 +1,22 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Rencontre - Formulaire Créé</title>
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styleGenerale.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/connexion.css')?>">
+</head>
+<body>
+	<div class="container">
+		<div class="cadre">
+			<h1>Votre formulaire a bien été créé !</h1>
+			<p>Le code pour le partager est: <strong><?php echo "$clefFormulaire"; ?></strong></p>
+			<div class="ligne">
+				<button type="submit" onclick="window.location.href='<?php echo base_url() ?>'">Valider</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+a{
+	text-decoration: inherit;
+	color: inherit;
+}
+
+body{
+	background: lightblue;
+	margin: 0;
+	padding: 0;
+}
+h1, h2{
+	font-family: "Montserrat", sans-serif;
+	font-weight: bold!important;
+	letter-spacing: .6px;
+	line-height: 1.5;
+	margin-left: 50px;
+	color: white;
+}
+h1{
+	font-size: 50px;
+}
+p{
+	font: 20px "Poppins", "Nunito Sans", "Montserrat", sans-serif;
+	letter-spacing: .3px;
+}
+.ligne{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.champs{
+	font: "Poppins", "Nunito Sans", "Montserrat", sans-serif;
+	text-align: center;
+	opacity: 0.6;
+	border: none;
+	outline: none;
+	transition: width 0.3s;
+}
+
+.bouton p{
+	color: white;
+	font: 25px "Poppins", "Nunito Sans", "Montserrat", sans-serif;
+	letter-spacing: .3px;
+	line-height: 2;
+	text-align: center;
+}
+.bouton div{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.bouton div img{
+	width: 150px;
+	height: 150px;
+	transition: width 0.3s, height 0.3s;
+}
+.bouton:hover div img{
+	width: 200px;
+	height: 200px;
+}
+.bouton{
+	background: linear-gradient(135deg, #184e68, #57ca85);
+	border-radius: 10px;
+	width: 300px;
+	height: 300px;
+	margin: 40px;
+	border: 2px solid black;
+	transition: width 0.3s, height 0.3s, margin 0.3s;
+}
+
+.bouton:hover{
+	width: 350px;
+	height: 350px;
+	margin: 15px;
+}
+
+button{
+	border-radius: 10px;
+	background: linear-gradient(135deg, #184e68, #57ca85);
+	width: 150px;
+	height: 50px;
+	color: white;
+	font: 25px "Poppins", "Nunito Sans", "Montserrat", sans-serif;
+	letter-spacing: .3px;
+}

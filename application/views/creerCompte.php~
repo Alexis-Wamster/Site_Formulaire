@@ -1,0 +1,41 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Rencontre - Creer un compte</title>
+
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styleGenerale.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/creerCompte.css')?>">
+</head>
+<body>
+	<div class="container">
+		<div class="cadre">
+			<h1>Inscrivez vous</h1>
+			<?=form_open('compte_controller/inscription')?>
+				<div class="prenomNom">
+					<div class="prenom">
+						<p>Votre Prénom</p>
+						<input class="champs petit" type="text" placeholder="Francis" name="prenom">
+					</div>
+					<div class="nom">
+						<p>Votre Nom</p>
+						<input class="champs petit" type="text" placeholder="Dupond" name="nom">
+					</div>
+				</div>
+				<p>Votre email</p>
+				<input class="champs grand" type="email" placeholder="addresse.mail@exemple.fr" name="email">
+				<p>Votre mot de passe</p>
+				<input class="champs grand" type="password" placeholder="********" name="motDePasse1">
+				<p>Confirmez votre mot de passe</p>
+				<input class="champs grand" type="password" placeholder="********" name="motDePasse2">
+				<div class="ligne">
+					<button>Retour</button>
+					<button type="submit">Valider</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

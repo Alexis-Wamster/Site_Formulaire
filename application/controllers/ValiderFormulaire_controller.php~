@@ -1,0 +1,13 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class ValiderFormulaire_controller extends CI_Controller {
+
+	public function valider()
+	{
+		$this->load->model('ValiderFormulaire_modele');
+		$modele = new ValiderFormulaire_modele();
+		$modele->stockeReponse();
+		$this->load->view("accueil_vue");
+	}
+}

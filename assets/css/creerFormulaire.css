@@ -1,0 +1,88 @@
+.champs2 {
+	font: "Poppins", "Nunito Sans", "Montserrat", sans-serif;
+	color: white;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	transition: background 0.3s;
+}
+
+.champs2:hover {
+	background-color: rgba(0,0,0,0.2);
+}
+
+.champs2::placeholder {
+	opacity: inherit;
+	opacity: 0.4;
+	color: white;
+}
+
+.titre{
+	font-size: 40px;
+   height: 50px;
+   width: 100vh;
+}
+
+.lieu{
+	font-size: 20px;
+   height: 30px;
+   width: 100vh;
+}
+
+.description{
+	font-size: 20px;
+}
+
+textarea{
+	resize: none;
+	height: 10em;
+	width: 100vh;
+}
+
+textarea::placeholder{
+	opacity: inherit;
+	opacity: 0.4;
+}
+
+.listeDate{
+	margin-top: 20px;
+}
+
+.listeDate li{
+	background-color: #4b83af;
+	border-radius: 0px 0px 20px 20px;
+}
+
+.listeDate li .date{
+	background-color: #2b658f;
+}
+
+.contenus{
+	margin: 0px 300px;
+}
+
+.ajouter{
+	border-radius: 10px;
+	background: linear-gradient(135deg, #184e68, #57ca85);
+	width: 200px;
+	height: 50px;
+	color: white;
+	font: 25px "Poppins", "Nunito Sans", "Montserrat", sans-serif;
+	letter-spacing: .3px;
+	transition: width 0.3s, height 0.3s, font-size 0.3s;
+}
+
+.ajouter:hover{
+	width: 220px;
+	height: 70px;
+	font-size: 30px;
+}
+
+.containerAjouter{
+	border: 2px solid black;
+	border-radius: 20px;
+	width: 410px;
+	padding-left: 30px;
+	margin: 30px 0px;
+	background-color: #2b658f;
+}

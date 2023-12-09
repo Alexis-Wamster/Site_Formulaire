@@ -1,0 +1,127 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Compte_modele extends CI_Model {
+	public $info;
+	public $creerCompte;
+
+	public function __construct($email='',$motDePasse='',$prenom='',$nom='')
+	{
+		parent::__construct();
+		$this->info = ['email'=>$email,'motDePasse'=>$motDePasse,'prenom'=>$prenom,'nom'=>$nom];
+		$this->creerCompte = ['email'=>'','motDePasse'=>'','prenom'=>'','nom'=>''];
+	}
+
+	public function verificationMotDePasse($motDePasse){
+		$autorise = '/^[a-zA-Z0-9!@#$%^&*()\-_+=~`[\]{}|:;"<>,.?\/]+$/';
+		if (!preg_match($autorise, $motDePasse)) {
+    		return false;
+		}
+		if (strlen($motDePasse) < 8 || strlen($motDePasse) > 32) {
+    		return false;
+		}
+		if (!preg_match('/[A-Z]/', $motDePasse)) {
+		    return false;
+		}
+		if (!preg_match('/[a-z]/', $motDePasse)) {
+		    return false;
+		}
+		if (!preg_match('/[0-9]/', $motDePasse)) {
+		    return false;
+		}
+		if (!preg_match('/[^a-zA-Z0-9]/', $motDePasse)) {
+		    return false;
+		}
+		return true;
+	}
+
+	public function verificationMot($chaine){
+		$autorise = '/^[a-zA-Z-_`]+$/';
+		if (!preg_match($autorise, $chaine)) {
+    		return false;
+		}
+		if (strlen($chaine) < 1 || strlen($chaine) > 40) {
+    		return false;
+		}
+		if (!preg_match('/[a-zA-Z]/', $chaine)) {
+		    return false;
+		}
+		return true;
+	}
+
+	public function envoyerMail($prenom, $nom, $code, $email){
+		$message = "Bonjour ".$prenom." ".$nom.",\n\nVous avez demmandez à vous inscrire sur Doodle like. Voici le code à saisir sur notre site pour confirmer votre inscription:\n\n".$code."\n\nSi vous pensez qu'il s'agit d'une erreur merci d'ignorer ce message.\n\nCordialement,\nL'équipe du site Doodle like:\nOscar Williatte\nEdouard Schnur\nAlexis Wamster\n";
+		$this->load->library('email');
+		$this->email->from('alexis.wamster@etu.u-pec.fr', 'doodle_like');
+		$this->email->to($email);
+		$this->email->subject('Inscription Doodle like');
+		$this->email->message($message);
+		if ($this->email->send()) {
+    		return true;
+		}		
+		else {
+    		return false;
+		}
+	}
+
+	public function inscription(){
+		
+		$email = $this->input->post('email');
+		$prenom = $this->input->post('prenom');
+		$nom = $this->input->post('nom');
+		$motDePasse1 = $this->input->post('motDePasse1');
+		$motDePasse2 = $this->input->post('motDePasse2');
+		
+		$this->load->database();
+		
+		$sql = "SELECT * FROM S2_2_utilisateur where email = ?";
+		$compteIdentique = $this->db->query($sql,[$email]);
+		if ($compteIdentique->num_rows()!==0){
+			return "unicite";
+		}
+		if(!$this->verificationMot($prenom)){
+			return "prenom";
+		}
+		if(!$this->verificationMot($nom)){
+			return "nom";
+		}
+		if(!filter_var($email, FILTER_SANITIZE_EMAIL)){
+			return 'email';
+		}
+		if(!$this->verificationMotDePasse($motDePasse1)){
+			return "motDePasse";
+		}
+		if ($motDePasse1 !== $motDePasse2){
+			return "motDePasse2";
+		}
+		
+		
+		$motDePasse = password_hash($motDePasse1, PASSWORD_DEFAULT);
+		$ligne = array(
+   		'email' => $email,
+   		'motDePasse' => $motDePasse,
+   		'nom' => $nom,
+   		'prenom' => $prenom
+		);
+		$this->db->insert('S2_2_utilisateur', $ligne);
+	}
+
+	public function connexion(){
+		$email = $this->input->post('email');
+		$motDePasse = $this->input->post('motDePasse');
+		if (filter_var($motDePasse, FILTER_UNSAFE_RAW)==false || filter_var($email, FILTER_SANITIZE_EMAIL)==false){
+			return false;
+		}
+		$query = $this->db->query("SELECT motDePasse FROM S2_2utilisateur WHERE email=$email");
+		$motDePasseCrypte = $query->result();
+		echo $motDePasseCrypte;
+		if (password_verify($motDePasse, $motDePasseCrypte)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	public function codeVerifie(){
+		$code = 88888888;
+	}
+}

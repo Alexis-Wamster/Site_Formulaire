@@ -1,0 +1,39 @@
+.container{
+	margin: 0px 300px;
+}
+
+.formulaire{
+	background: linear-gradient(135deg, #184e68, #57ca85);
+	border-radius: 10px;
+	margin: 25px 25px;
+	border: 2px solid black;
+	transition: margin 0.3s;
+}
+
+.formulaire:hover{
+	margin: 25px 0px;
+}
+
+p, h2{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+p{
+	color: white;
+	margin-left: 20px;
+}
+
+.ligne1{
+	display: flex;
+}
+
+.droite{
+	display: flex;
+	flex-direction: column;
+}
+
+.gauche{
+	width: 100%;
+}

@@ -1,0 +1,17 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Rencontre - Formulaire introuvable</title>
+
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styleGenerale.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/formulaireIntrouvable.css')?>">
+</head>
+<body>
+	<h1><?php echo "$formulaire['titre']"; ?></h1>
+	<h2><?php echo "$formulaire['lieu']"; ?></h2>
+	<h2><?php echo "$formulaire['description']"; ?></h2>
+</body>
+</html>

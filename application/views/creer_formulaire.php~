@@ -1,0 +1,111 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Recontre - création de formulaire</title>
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styleGenerale.css')?>">
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/creerFormulaire?v=6.css')?>">
+</head>
+<body >
+	<?php
+		//if (isset($_SESSION['creer_formulaire'])) {
+			//$data = $_SESSION['creer_formulaire'];
+		if (isset($_COOKIE['creer_Formulaire'])) {
+			
+    		$data = json_decode($_COOKIE['creer_Formulaire'], true);
+			$titre = $data['cash']['titre'];
+			$lieu = $data['cash']['lieu'];
+			$description = $data['cash']['description'];
+			$date = $data['cash']['date'];
+			$date2 = $data['cash']['date2'];
+			$classe = $data['classe'];
+			$message = $data['message'];
+		}
+		else{
+			$titre = "";
+			$lieu = "";
+			$description = "";
+			$date = [];
+			$date2 = [];
+			$classe['titre'] = "";
+			$classe['lieu'] = "";
+			$classe['description'] = "";
+			$message['titre'] = "";
+			$message['lieu'] = "";
+			$message['description'] = "";
+			$message['jour'] = "";
+		}
+		$p1="<p class=\"erreurTexte\">";
+		$p2="</p>";
+	?>
+	<?= form_open('creerFormulaire_controller/boutonClique') ?>
+	<div class="enTete">
+		<input
+			class="champs2 titre <?php echo $classe['titre']; ?>"
+			type="text"
+			placeholder="Ecrivez le titre de votre formulaire"
+			maxlength="40"
+			name="titre"
+			value="<?php echo $titre ?>"
+		>
+		<?php echo "{$p1}{$message['titre']}{$p2}"?>
+		<input
+			class="champs2 lieu <?php echo $classe['lieu']; ?>"
+			type="text"
+			placeholder="Mettez le lieu du rendez-vous"
+			maxlength="60"
+			name="lieu"
+			value="<?php echo $lieu; ?>"
+		>
+		<?php echo "{$p1}{$message['lieu']}{$p2}"?>
+		<textarea
+			class="champs2 description <?php echo $classe['description']; ?>"
+			placeholder="Ecrivez ici une courte description en écrivant en quoi consiste votre rendez-vous"
+			maxlength="300"
+			name="description"
+			rows="5"
+		><?php echo "$description"; ?></textarea>
+		<?php echo "{$p1}{$message['description']}{$p2}"?>
+	</div>
+
+	<div class="contenus">
+		<ul class="listeDate">
+		<?php
+			$jour2 = reset($date2);
+			foreach ($date as $jour => $listeHeure) {
+				echo "<li class='{$classe[$jour]}'>";
+					echo "<p>$jour2</p>";
+					echo "<button name='action' value='remove $jour'>supprimer une date</button>";
+					echo "<ul class='listeHeure'>";
+					foreach ($listeHeure as $heure => $listeVide){
+						echo "<li>";
+							echo "$heure";
+							echo "<button name='action' value='remove $jour $heure'>supprimer une heure</button>";
+						echo "</li>";
+						echo "{$p1}{$message[$jour]}{$p2}";
+					}
+					echo "</ul>";
+					echo "<input class='' type='time' name='$jour'>";
+					echo "<button name='action' value='add $jour'>Ajouter une heure</button>";
+					$jour2 = next($date2);
+				echo "</li>";
+				echo "{$p1}{$message[$jour]}{$p2}";
+			}
+
+		?>
+		</ul>
+		<?php echo "{$p1}{$message['jour']}{$p2}"?>
+
+		<div>
+			<input class="" type="date" name="newDate">
+			<button name="action" value="add">Ajouter une date</button>
+		</div>
+		<div>
+			<button onclick="window.location.href='<?php echo base_url() ?>'">Accueil</button>
+			<button name="action" value="valider">Valider</button>
+		</div>
+	</div>
+</form>
+</body>

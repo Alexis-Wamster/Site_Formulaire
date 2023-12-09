@@ -1,0 +1,63 @@
+.container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.cadre{
+	background: linear-gradient(135deg, #5b247a, #1bcedf);
+	border: 2px solid black;
+	width: 1000px;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: center;
+}
+.prenomNom{
+	display: flex;
+	width: 1000px;
+	justify-content: space-around;
+}
+.prenom, .nom{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 400px;
+}
+h1{
+	text-align: center;
+}
+
+p{
+	color: white;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 650px;
+}
+
+.champs{
+	border-radius: 30px;
+	height: 60px;
+	font-size: 40px;
+	
+}
+
+.grand{
+	width: 600px;
+}
+.grand:hover{
+	width: 650px;
+}
+
+.petit{
+	width: 350px;
+}
+.petit:hover{
+	width: 400px;
+}

@@ -1,0 +1,50 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Rencontre - Formulaire introuvable</title>
+
+	<link rel="stylesheet" type="text/css" href="<?=base_url('assets/css/styleGenerale.css')?>">
+</head>
+<body>
+	<h1><?php echo $titre; ?></h1>
+	<h2><?php echo $lieu; ?></h2>
+	<h2><?php echo $description; ?></h2>
+	<form action='<?=site_url("ValiderFormulaire_controller/valider")?>' method="post">
+		<p>Votre Prénom</p>
+		<input
+			class="champs petit"
+			type="text"
+			placeholder="Francis"
+			name="prenom"
+			maxlength="40"
+			required
+		>
+		<p>Votre Nom</p>
+		<input
+			class="champs petit "
+			type="text"
+			placeholder="Dupond"
+			name="nom"
+			maxlength="40"
+			required
+		>
+		<ul>
+		<?php
+			foreach($date as $jour => $listeHeure){
+				echo "<li>$jour</li>";
+				echo "<ul>";
+				foreach($listeHeure as $horaire => $listeVide){
+					echo "<li><input type='checkbox' name='$jour-$horaire'>$horaire</input></li>";
+				}
+				echo "</ul>";
+			}
+		?>
+		</ul>
+		<button >Accueil</button>
+		<button name="clefFormulaire" value="<?php echo $cleFormulaire; ?>">Valider</button>
+	</form>
+</body>
+</html>
